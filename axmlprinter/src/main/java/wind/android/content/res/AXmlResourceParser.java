@@ -18,7 +18,12 @@ package wind.android.content.res;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.IntBuffer;
 import wind.v1.XmlPullParserException;
+import java.io.ByteArrayInputStream;
+
 
 import wind.android.content.res.ChunkUtil;
 import wind.android.content.res.IntReader;
@@ -51,6 +56,15 @@ public class AXmlResourceParser implements XmlResourceParser {
 		close();
 		if (stream!=null) {
 			m_reader=new wind.android.content.res.IntReader(stream,false);
+		}
+	}
+
+	public void open(ByteBuffer stream) {
+		close();
+		if (stream!=null) {
+			// how to read bytebuffer
+			stream.order(ByteOrder.LITTLE_ENDIAN);
+			m_reader=new wind.android.content.res.IntReader(new ByteArrayInputStream(stream.array()),false);
 		}
 	}
 	

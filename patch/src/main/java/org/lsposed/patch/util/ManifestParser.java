@@ -8,6 +8,10 @@ import java.io.InputStream;
 import wind.android.content.res.AXmlResourceParser;
 import wind.v1.XmlPullParser;
 import wind.v1.XmlPullParserException;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import javax.annotation.Nullable;
+import com.wind.meditor.core.ManifestEditor;
 
 /**
  * Created by Wind
@@ -15,13 +19,14 @@ import wind.v1.XmlPullParserException;
 public class ManifestParser {
 
     public static Pair parseManifestFile(InputStream is) throws IOException {
+        byte[] bytes = is.readAllBytes();
+        ByteBuffer buffer = ByteBuffer.wrap(bytes);
         AXmlResourceParser parser = new AXmlResourceParser();
         String packageName = null;
         String appComponentFactory = null;
         int minSdkVersion = 0;
         try {
-            parser.open(is);
-
+            parser.open(buffer);
             while (true) {
                 int type = parser.next();
                 System.out.println("Parsing is at :"+String.valueOf(type));
