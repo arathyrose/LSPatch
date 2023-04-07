@@ -63,7 +63,7 @@ public class ManifestParser {
                 }
             }
         } catch (XmlPullParserException | IOException e) {
-            return new Pair("error", e.getMessage());
+            return new Pair("error", e.getMessage(), 12);
         }
         return new Pair(packageName, appComponentFactory, minSdkVersion);
     }
