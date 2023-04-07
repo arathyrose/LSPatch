@@ -24,6 +24,7 @@ public class ManifestParser {
 
             while (true) {
                 int type = parser.next();
+                System.out.println("Parsing is at :"+String.valueOf(type));
                 if (type == XmlPullParser.END_DOCUMENT) {
                     break;
                 }
