@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import org.lsposed.patch.util.JavaLogger;
+import org.lsposed.patch.util.Logger;
 
 import wind.android.content.res.AXmlResourceParser;
 import wind.v1.XmlPullParser;
